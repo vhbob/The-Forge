@@ -1,0 +1,9 @@
+main: com.vhbob.tf.Main
+name: TheForge
+version: 1.0
+description: Forge items from dust you find while mining.
+author: vhbob
+commands:
+  Forge:
+    description: The base Forge command!
+    aliases: [frg]

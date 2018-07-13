@@ -1,0 +1,66 @@
+# Welcome to The Forge 1.0!
+# Author: Vhbob
+# Thank you for purchasing The Forge!
+# Below are configuration sections for the plugin.
+# Each section is explained in the header above it. 
+
+# Plugin message prefix. MUST BE IN QUOTES.
+prefix: "&7[&E&LThe Forge&7]: "
+
+# Forge name. This shows up when The Forge is open. MUST BE IN QUOTES.
+Name: "&C&LThe Forge"
+
+# Dust drop chances (out of 100)
+# Ex: setting a chance to 1 will make give it a 1% chance of dropping.
+# If you are not using a dust then set it's chance to 0.
+# These base chances. See "Multipliers" below to choose modify percentages for other block types.
+# Only use decimals up to the hundreds place: 1.25 is okay but 1.254 is not.
+# Under "Mine" are the chances for breaking blocks and under "Kill" are chances for killing mobs
+Chances:
+  Dust:
+    Mine:
+      Common: 1
+      Uncommon: .75
+      Rare: 0.5
+      Epic: 0.25
+      Legendary: 0.1
+    Kill:
+      Common: 1
+      Uncommon: .75
+      Rare: 0.5
+      Epic: 0.25
+      Legendary: 0.1
+    
+# Below are multipliers for modifying the percentages above based on block type.
+# Ex: a multiplier of 1 will use the above values while a multiplier of 2 will have double the chance to receive the drop.
+# So with a multiplier of 2 will have a 1% chance of dropping common dust (with default settings where common dust usually has .5%).
+# You may add custom material names to add more blocks that will drop dust.
+# Ex: If you want nether quartz to drop dust, add QUARTZ_ORE: 1 to the list and it will now drop dust with default chances.
+# To exclude a block from dropping dust remove it from this list
+# Only use decimals up to the hundreds place: 1.25 is okay but 1.254 is not.
+# Under "Blocks" is for mining. Please use material names from: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+# Under "Mobs" is for killing mobs. Please use mob names from: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html
+Multipliers:
+  Blocks:
+    STONE: 1
+    COAL_ORE: 1.5
+    IRON_ORE: 2
+    Gold_ORE: 3
+    REDSTONE_ORE: 3.5
+    LAPIS_ORE: 3.5
+    DIAMOND_ORE: 7.5
+    EMERALD_ORE: 10
+  Mobs:
+    ZOMBIE: 1
+    SKELETON: 1.5
+    SPIDER: 1.5
+    CREEPER: 2
+    GHAST: 5
+    ENDER_DRAGON: 50
+    
+  
+# Toggle particles on or off. Use true or false values only.
+Particles: true
+
+# Toggle sounds on or off. Use true or false values only.
+Sound: true
