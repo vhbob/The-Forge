@@ -60,7 +60,7 @@ public class CreateForge implements CommandExecutor {
 								+ "The Forge has not been setup yet! Ask an admin to create a forge");
 					}
 				} else if (args[0].equalsIgnoreCase("create") && args.length == 1) {
-					if (p.hasPermission("Forge.Create") && p.isOp()) {
+					if (p.hasPermission("Forge.Create") || p.isOp()) {
 						if (p.getTargetBlock(null, 7) != null && p.getTargetBlock(null, 7).getType() != Material.AIR) {
 							BlockFace blockFace = utils.getBlockFace(p);
 							if (blockFace != null) {
@@ -191,8 +191,7 @@ public class CreateForge implements CommandExecutor {
 							p.sendMessage(ChatColor.RED + "Rarities are case sensitive!");
 						}
 					} else {
-						p.sendMessage(prefix + ChatColor.RED
-								+ "Usage: /Forge set cost (Rarity) (Item number, starts at 1) (Common cost) "
+						p.sendMessage(prefix + ChatColor.RED + "Usage: /Forge set cost (Rarity) (Slot) (Common cost) "
 								+ "(Uncommon cost) (Rare cost) (Epic cost) (Legendary cost)");
 					}
 				} else if (args.length == 3 && args[0].equalsIgnoreCase("delete")) {
@@ -257,12 +256,12 @@ public class CreateForge implements CommandExecutor {
 					}
 					if (p.hasPermission("Forge.Item.Delete") || p.isOp()) {
 						p.sendMessage(
-								"/Forge Delete (Rarity) (Item number)- delete an item to The Forge. Item number is its place in the inventory");
+								"/Forge Delete (Rarity) (Slot)- delete an item to The Forge for a specific rarity and slot.");
 					}
 					if (p.hasPermission("Forge.Set.Cost") || p.isOp()) {
 						p.sendMessage(
-								"/Forge set cost (Rarity) (Item number) (Common cost) (Uncommon cost) (Rare cost) (Epic cost) (Legendary cost)"
-										+ " - Set the dust costs for a Forge item for a specific rarity and slot. Item number is its place in the inventory");
+								"/Forge set cost (Rarity) (Slot) (Common cost) (Uncommon cost) (Rare cost) (Epic cost) (Legendary cost)"
+										+ " - Set the dust costs for a Forge item for a specific rarity and slot.");
 					}
 				}
 			}
@@ -290,7 +289,7 @@ public class CreateForge implements CommandExecutor {
 			utils.saveCustomConfig();
 			player.sendMessage(prefix + ChatColor.GREEN + "Item added to the forge!");
 			player.sendMessage(ChatColor.GREEN
-					+ "Don't forget to set its dust cost with /Forge set cost (Rarity) (Item number) (Common cost) (Uncommon cost) (Rare cost) (Epic cost) (Legendary cost)");
+					+ "Don't forget to set its dust cost with /Forge set cost (Rarity) (Slot) (Common cost) (Uncommon cost) (Rare cost) (Epic cost) (Legendary cost)");
 			player.sendMessage(ChatColor.GREEN + "Put 0 to exclude a dust type from the cost");
 			player.sendMessage(ChatColor.GREEN + "Dust costs default to 1 of each type of dust");
 		} else {

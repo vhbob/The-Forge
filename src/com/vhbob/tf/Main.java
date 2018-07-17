@@ -14,6 +14,7 @@ import com.vhbob.tf.handling.DustDrops;
 import com.vhbob.tf.handling.ForgeHandling;
 import com.vhbob.tf.handling.ForgeInvHandling;
 import com.vhbob.tf.handling.ForgingHandling;
+import com.vhbob.tf.handling.NoCrafting;
 
 public class Main extends JavaPlugin {
 
@@ -33,6 +34,7 @@ public class Main extends JavaPlugin {
 		getCommand("Forge").setExecutor(new CreateForge(this));
 		getServer().getPluginManager().registerEvents(new ForgeInvHandling(this), this);
 		getServer().getPluginManager().registerEvents(new ForgingHandling(this), this);
+		getServer().getPluginManager().registerEvents(new NoCrafting(this), this);
 		getServer().getConsoleSender().sendMessage(prefix + "The Forge has been " + ChatColor.GREEN + "enabled!");
 	}
 

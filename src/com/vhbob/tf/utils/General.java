@@ -165,4 +165,42 @@ public class General {
 		return false;
 	}
 
+	public ItemStack commonEssence() {
+		ArrayList<String> lore = new ArrayList<>();
+		lore.add(ChatColor.WHITE + "Use this at /forge to forge items!");
+		ItemStack dust = customItem(ChatColor.WHITE + "" + ChatColor.BOLD + "Common Essence", lore, Material.SULPHUR, 1);
+		return dust;
+	}
+
+	public ItemStack uncommonEssence() {
+		ArrayList<String> lore = new ArrayList<>();
+		lore.add(ChatColor.WHITE + "Use this at /forge to forge items!");
+		ItemStack dust = customItem(ChatColor.RED + "" + ChatColor.BOLD + "Uncommon Essence", lore, Material.SUGAR, 1);
+		return dust;
+	}
+
+	public ItemStack rareEssence() {
+		ArrayList<String> lore = new ArrayList<>();
+		lore.add(ChatColor.WHITE + "Use this at /forge to forge items!");
+		ItemStack dust = customItem(ChatColor.BLUE + "" + ChatColor.BOLD + "Rare Essence", lore, Material.GLOWSTONE_DUST,
+				1);
+		return dust;
+	}
+
+	public ItemStack epicEssence() {
+		ArrayList<String> lore = new ArrayList<>();
+		lore.add(ChatColor.WHITE + "Use this at /forge to forge items!");
+		ItemStack dust = customItem(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Epic Essence", lore, Material.REDSTONE,
+				1);
+		return dust;
+	}
+
+	public ItemStack legendaryEssence() {
+		ArrayList<String> lore = new ArrayList<>();
+		lore.add(ChatColor.WHITE + "Use this at /forge to forge items!");
+		ItemStack dust = customItem(ChatColor.GOLD + "" + ChatColor.BOLD + "Legendary Essence", lore,
+				Material.BLAZE_POWDER, 1);
+		return dust;
+	}
+	
 }

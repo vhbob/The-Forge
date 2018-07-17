@@ -17,7 +17,7 @@ Name: "&C&LThe Forge"
 # Only use decimals up to the hundreds place: 1.25 is okay but 1.254 is not.
 # Under "Mine" are the chances for breaking blocks and under "Kill" are chances for killing mobs
 Chances:
-  Dust:
+  Drops:
     Mine:
       Common: 1
       Uncommon: .75

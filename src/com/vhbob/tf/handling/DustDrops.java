@@ -37,14 +37,14 @@ public class DustDrops implements Listener {
 		int chance = new Random().nextInt(10000);
 		for (String type : pl.getConfig().getConfigurationSection("Multipliers.Mobs").getKeys(false)) {
 			if (e.getEntityType().toString().equalsIgnoreCase(type)) {
-				double commonChance = pl.getConfig().getDouble("Chances.Dust.Kill.Common") * 100;
-				double uncommonChance = pl.getConfig().getDouble("Chances.Dust.Kill.Uncommon") * 100;
-				double rareChance = pl.getConfig().getDouble("Chances.Dust.Kill.Rare") * 100;
-				double epicChance = pl.getConfig().getDouble("Chances.Dust.Kill.Epic") * 100;
-				double legendaryChance = pl.getConfig().getDouble("Chances.Dust.Kill.Legendary") * 100;
+				double commonChance = pl.getConfig().getDouble("Chances.Drops.Kill.Common") * 100;
+				double uncommonChance = pl.getConfig().getDouble("Chances.Drops.Kill.Uncommon") * 100;
+				double rareChance = pl.getConfig().getDouble("Chances.Drops.Kill.Rare") * 100;
+				double epicChance = pl.getConfig().getDouble("Chances.Drops.Kill.Epic") * 100;
+				double legendaryChance = pl.getConfig().getDouble("Chances.Drops.Kill.Legendary") * 100;
 				checkForDrop(commonChance, uncommonChance, rareChance, epicChance, legendaryChance, chance,
 						pl.getConfig().getInt("Multipliers.Mobs." + type), e.getEntity().getKiller(),
-						e.getEntity().getLocation());
+						e.getEntity().getLocation(), 0);
 			}
 		}
 	}
@@ -57,13 +57,13 @@ public class DustDrops implements Listener {
 			int chance = new Random().nextInt(10000);
 			for (String type : pl.getConfig().getConfigurationSection("Multipliers.Blocks").getKeys(false)) {
 				if (b.getType().toString().equalsIgnoreCase(type)) {
-					double commonChance = pl.getConfig().getDouble("Chances.Dust.Mine.Common") * 100;
-					double uncommonChance = pl.getConfig().getDouble("Chances.Dust.Mine.Uncommon") * 100;
-					double rareChance = pl.getConfig().getDouble("Chances.Dust.Mine.Rare") * 100;
-					double epicChance = pl.getConfig().getDouble("Chances.Dust.Mine.Epic") * 100;
-					double legendaryChance = pl.getConfig().getDouble("Chances.Dust.Mine.Legendary") * 100;
+					double commonChance = pl.getConfig().getDouble("Chances.Drops.Mine.Common") * 100;
+					double uncommonChance = pl.getConfig().getDouble("Chances.Drops.Mine.Uncommon") * 100;
+					double rareChance = pl.getConfig().getDouble("Chances.Drops.Mine.Rare") * 100;
+					double epicChance = pl.getConfig().getDouble("Chances.Drops.Mine.Epic") * 100;
+					double legendaryChance = pl.getConfig().getDouble("Chances.Drops.Mine.Legendary") * 100;
 					checkForDrop(commonChance, uncommonChance, rareChance, epicChance, legendaryChance, chance,
-							pl.getConfig().getInt("Multipliers.Blocks." + type), e.getPlayer(), b.getLocation());
+							pl.getConfig().getInt("Multipliers.Blocks." + type), e.getPlayer(), b.getLocation(), 1);
 				}
 			}
 		} else {
@@ -77,17 +77,31 @@ public class DustDrops implements Listener {
 	}
 
 	public void checkForDrop(Double commonChance, Double uncommonChance, Double rareChance, Double epicChance,
-			Double legendaryChance, int roll, double multi, Player p, Location dropLoc) {
+			Double legendaryChance, int roll, double multi, Player p, Location dropLoc, int type) {
 
 		ArrayList<String> lore = new ArrayList<>();
 		lore.add(ChatColor.WHITE + "Use this at /forge to forge items!");
 
-		ItemStack common = utils.commonDust();
-		ItemStack uncommon = utils.uncommonDust();
-		ItemStack rare = utils.rareDust();
-		ItemStack epic = utils.epicDust();
-		ItemStack legendary = utils.legendaryDust();
+		ItemStack common;
+		ItemStack uncommon;
+		ItemStack rare;
+		ItemStack epic;
+		ItemStack legendary;
 
+		if (type == 1) {
+			common = utils.commonDust();
+			uncommon = utils.uncommonDust();
+			rare = utils.rareDust();
+			epic = utils.epicDust();
+			legendary = utils.legendaryDust();
+		} else {
+			common = utils.commonDust();
+			uncommon = utils.uncommonDust();
+			rare = utils.rareDust();
+			epic = utils.epicDust();
+			legendary = utils.legendaryDust();
+		}
+		
 		if (roll <= multi * legendaryChance) {
 			spawnCircleOfParticles(p, Particle.FLAME, p.getLocation(), legendary, dropLoc);
 		} else if (roll <= multi * epicChance) {
